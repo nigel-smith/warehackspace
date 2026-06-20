@@ -1,0 +1,34 @@
+---
+layout: default
+title: "Updates — Ware Hackspace"
+description: "News, projects and progress from Ware Hackspace, Ware's new hackspace and Linux User Group."
+---
+
+  <!-- ============ INTRO ============ -->
+  <section id="updates-hero" class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Ware, Hertfordshire</p>
+      <h1>Updates</h1>
+      <p class="lede">News, projects and progress as they happen. No fixed schedule, just something worth saying when there's something worth saying.</p>
+    </div>
+  </section>
+
+  <!-- ============ POST LIST ============ -->
+  <section class="section" aria-labelledby="updates-heading">
+    <div class="wrap">
+      <h2 id="updates-heading" class="sr-only">All updates</h2>
+
+      <div class="update-list">
+        {% for post in site.posts %}
+        <article class="update-entry">
+          <p class="kicker">{{ post.date | date: "%-d %B %Y" }}</p>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+          <a class="group-link" href="{{ post.url | relative_url }}">Read more →</a>
+        </article>
+        {% else %}
+        <p class="note">Nothing posted yet, check back soon.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
