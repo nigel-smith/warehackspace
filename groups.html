@@ -1,44 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Local groups — Ware Hackspace</title>
-<meta name="description" content="Other active local groups in Ware, Hertfordshire, including Ware Men's Shed, The Maker & Mind Studio, Hertford Shires Rotary, and Ware in Bloom.">
-<meta name="color-scheme" content="light">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-
-<a class="skip-link" href="#main">Skip to main content</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="index.html">Ware&nbsp;<span>Hackspace</span></a>
-
-    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">
-      <span class="sr-only">Menu</span>
-      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
-        <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-    </button>
-
-    <nav class="site-nav" id="navLinks" aria-label="Primary">
-      <a href="index.html#about">About</a>
-      <a href="index.html#hackspace">Hackspace</a>
-      <a href="index.html#lug">Ware LUG</a>
-      <a href="index.html#roadmap">Roadmap</a>
-      <a href="groups.html" aria-current="page">Local groups</a>
-      <a class="nav-cta" href="index.html#involved">Get involved</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
+---
+layout: default
+title: "Local groups — Ware Hackspace"
+description: "Other active local groups in Ware, Hertfordshire, including Ware Men's Shed, The Maker & Mind Studio, Hertford Shires Rotary, and Ware in Bloom."
+---
 
   <!-- ============ INTRO ============ -->
   <section id="groups-hero" class="hero">
@@ -90,21 +54,6 @@
 
       </div>
 
-      <p class="note" style="margin-top:30px;">Know of another hands-on group in or around Ware that should be here? <a href="index.html#involved">Let us know</a> and we'll add it.</p>
+      <p class="note" style="margin-top:30px;">Know of another hands-on group in or around Ware that should be here? <a href="{{ '/' | relative_url }}#involved">Let us know</a> and we'll add it.</p>
     </div>
   </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>Ware Hackspace — built in the open on GitHub.</p>
-    <!-- EDIT: replace with your real repo path -->
-    <p><a href="https://github.com/YOUR-USERNAME/ware-hackspace" target="_blank" rel="noopener">View the source</a> · Ware, Hertfordshire · 2026</p>
-    <p class="a11y-note">This site aims to meet WCAG 2.1 AA. Spotted an accessibility problem? <a href="index.html#involved">Let us know</a>.</p>
-  </div>
-</footer>
-
-<script src="assets/main.js" defer></script>
-</body>
-</html>
