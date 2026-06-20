@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article class="section post">
+  <div class="wrap">
+    <p class="post-back"><a href="{{ '/updates.html' | relative_url }}">&larr; Back to updates</a></p>
+    <p class="kicker">{{ page.date | date: "%-d %B %Y" }}</p>
+    <h1>{{ page.title }}</h1>
+    <div class="prose post-body">
+      {{ content }}
+    </div>
+  </div>
+</article>
