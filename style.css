@@ -1,0 +1,260 @@
+/* =========================================================
+   Ware Hackspace — stylesheet
+   Kept separate from index.html on purpose: edit wording in
+   index.html without worrying about layout, and tweak design
+   here without touching content. See README.md for more.
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root{
+  /* Surfaces */
+  --bg:        #FFFFFF;
+  --bg-soft:   #F5F7F6;   /* light cool panel, used for "What's a hackspace" */
+  --bg-warm:   #FBF3EC;   /* light warm panel, used for Men's Shed section */
+  --border:    #E3E7E5;
+
+  /* Text */
+  --ink:        #15191B;  /* primary text — high contrast on white */
+  --ink-muted:  #4B5563;  /* secondary text — still AA on white */
+
+  /* Teal accent — "digital" (hackspace / LUG) */
+  --teal:       #0E7C86;  /* links/icons on white */
+  --teal-dark:  #0A535A;  /* solid buttons, text on white background */
+  --teal-bg:    #E6F4F3;  /* pill background */
+  --teal-text:  #0A4A50;  /* pill text, AA on --teal-bg */
+
+  /* Rust accent — "community / making" (Men's Shed) */
+  --rust:       #B5481F;
+  --rust-dark:  #8A3216;
+  --rust-bg:    #FBEAE0;
+  --rust-text:  #8A3216;
+
+  /* Focus + utility */
+  --focus:      #1D4ED8;
+  --radius:     14px;
+  --radius-sm:  9px;
+  --max:        1040px;
+
+  /* Type */
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ---------- Reset-ish basics ---------- */
+*, *::before, *::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+h1,h2,h3{ font-family:var(--font-display); color:var(--ink); line-height:1.15; margin:0 0 .5em; }
+h1{ font-weight:800; }
+h2{ font-weight:700; }
+h3{ font-weight:700; font-size:1.05rem; }
+p{ margin:0 0 1em; }
+a{ color:var(--teal-dark); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+a:hover{ color:var(--teal); }
+ul, ol{ padding-left:0; margin:0; }
+
+/* ---------- Accessibility helpers ---------- */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+.skip-link{
+  position:absolute; left:12px; top:-60px;
+  background:var(--teal-dark); color:#fff; padding:10px 16px;
+  border-radius:var(--radius-sm); z-index:100; text-decoration:none;
+  font-weight:600; transition:top .15s ease;
+}
+.skip-link:focus{ top:12px; }
+
+:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:3px;
+  border-radius:4px;
+}
+/* Buttons / pills get a tighter offset so the ring doesn't look detached */
+.btn:focus-visible, .pill:focus-visible{ outline-offset:2px; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+.section{ padding:64px 0; border-top:1px solid var(--border); }
+.section-soft{ background:var(--bg-soft); }
+.section-warm{ background:var(--bg-warm); }
+.section-cta{ background:var(--bg-soft); }
+.kicker{
+  font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--teal-dark); margin:0 0 10px;
+}
+.prose{ max-width:68ch; }
+.prose p{ color:var(--ink-muted); }
+.prose strong{ color:var(--ink); }
+
+/* ---------- Header / nav ---------- */
+.site-header{
+  position:sticky; top:0; z-index:20;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(6px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 24px;
+}
+.brand{
+  font-family:var(--font-display); font-weight:800; font-size:1.05rem;
+  color:var(--ink); text-decoration:none;
+}
+.brand span{ color:var(--teal-dark); }
+
+.nav-toggle{
+  display:none; align-items:center; justify-content:center;
+  width:42px; height:42px; padding:0;
+  background:transparent; border:1px solid var(--border); border-radius:var(--radius-sm);
+  color:var(--ink); cursor:pointer;
+}
+
+.site-nav{ display:flex; align-items:center; gap:22px; }
+.site-nav a{
+  font-size:.95rem; font-weight:500; color:var(--ink-muted);
+  text-decoration:none; padding:6px 2px;
+}
+.site-nav a:hover{ color:var(--ink); }
+.nav-cta{
+  background:var(--teal-dark); color:#fff !important;
+  padding:9px 16px !important; border-radius:999px; font-weight:600 !important;
+}
+.nav-cta:hover{ background:var(--teal) !important; }
+
+@media (max-width:760px){
+  .nav-toggle{ display:inline-flex; }
+  .site-nav{
+    position:absolute; left:0; right:0; top:100%;
+    background:#fff; border-bottom:1px solid var(--border);
+    flex-direction:column; align-items:flex-start; gap:4px;
+    padding:10px 24px 18px; display:none;
+  }
+  .site-nav.is-open{ display:flex; }
+  .site-nav a{ width:100%; padding:10px 0; }
+  .nav-cta{ width:100%; text-align:center; margin-top:6px; }
+}
+
+/* ---------- Hero ---------- */
+.hero{ padding:72px 0 56px; }
+.eyebrow{
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--ink-muted); margin:0 0 18px;
+}
+h1{ font-size:clamp(2.1rem, 5vw, 3.2rem); max-width:16ch; }
+.lede{ font-size:1.18rem; color:var(--ink-muted); max-width:56ch; }
+
+.cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 28px; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:600; font-size:.97rem; text-decoration:none;
+  padding:13px 22px; border-radius:999px; border:2px solid transparent;
+  min-height:44px; /* comfortable touch target */
+}
+.btn-solid{ background:var(--teal-dark); color:#fff; }
+.btn-solid:hover{ background:#073B40; color:#fff; }
+.btn-ghost{ background:#fff; color:var(--ink); border-color:var(--border); }
+.btn-ghost:hover{ border-color:var(--ink); }
+
+.status-pills{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; }
+.pill{
+  font-family:var(--font-mono); font-size:.78rem; font-weight:500;
+  padding:5px 13px; border-radius:999px; border:1px solid;
+  display:inline-flex; align-items:center;
+}
+.pill-neutral{ border-color:var(--border); color:var(--ink-muted); background:#fff; }
+.pill-teal{ border-color:var(--teal); color:var(--teal-text); background:var(--teal-bg); }
+.pill-rust{ border-color:var(--rust); color:var(--rust-text); background:var(--rust-bg); }
+
+/* ---------- Feature grid (What's a hackspace) ---------- */
+.feature-grid{
+  list-style:none; display:grid; grid-template-columns:repeat(2, 1fr);
+  gap:18px; margin-top:30px; padding:0;
+}
+@media (max-width:680px){ .feature-grid{ grid-template-columns:1fr; } }
+.feature{
+  background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+  padding:22px;
+}
+.feature-icon{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:42px; height:42px; border-radius:10px;
+  background:var(--teal-bg); color:var(--teal-dark); margin-bottom:14px;
+}
+.feature-icon svg{ width:22px; height:22px; }
+.feature h3{ margin-bottom:.35em; }
+.feature p{ color:var(--ink-muted); font-size:.96rem; margin:0; }
+
+/* ---------- Check list (Ware LUG activities) ---------- */
+.check-list{ list-style:none; margin-top:26px; max-width:64ch; }
+.check-list li{
+  position:relative; padding:12px 0 12px 30px;
+  border-bottom:1px solid var(--border); color:var(--ink-muted);
+}
+.check-list li:last-child{ border-bottom:none; }
+.check-list li::before{
+  content:""; position:absolute; left:0; top:18px;
+  width:9px; height:9px; border-radius:50%; background:var(--teal);
+}
+.check-list strong{ color:var(--ink); }
+
+/* ---------- Men's Shed status line ---------- */
+.status-line{
+  margin-top:24px; color:var(--ink-muted); display:flex; flex-wrap:wrap;
+  align-items:center; gap:10px; font-size:.97rem;
+}
+
+/* ---------- Roadmap ---------- */
+.roadmap-list{ list-style:none; margin-top:22px; max-width:64ch; }
+.roadmap-list li{
+  position:relative; padding:13px 0 13px 32px;
+  border-bottom:1px dashed var(--border); color:var(--ink);
+}
+.roadmap-list li:last-child{ border-bottom:none; }
+.roadmap-list li::before{
+  content:""; position:absolute; left:0; top:16px;
+  width:18px; height:18px; border-radius:5px; border:2px solid var(--border);
+}
+.roadmap-list li.done{ color:var(--ink-muted); text-decoration:line-through; text-decoration-color:#C4CBC8; }
+.roadmap-list li.done::before{
+  background:var(--teal-dark); border-color:var(--teal-dark);
+}
+.roadmap-list li.done::after{
+  content:""; position:absolute; left:5px; top:19px;
+  width:8px; height:4px; border-left:2px solid #fff; border-bottom:2px solid #fff;
+  transform:rotate(-45deg);
+}
+.status-label{
+  font-family:var(--font-mono); font-size:.75rem; text-transform:uppercase;
+  letter-spacing:.03em; color:var(--ink-muted); text-decoration:none; display:inline-block;
+  margin-right:4px;
+}
+.roadmap-list li.done .status-label{ color:var(--teal-dark); }
+
+/* ---------- Get involved ---------- */
+.note{ color:var(--ink-muted); font-size:.92rem; max-width:58ch; margin-top:4px; }
+
+/* ---------- Footer ---------- */
+.site-footer{ border-top:1px solid var(--border); padding:32px 0 44px; }
+.site-footer p{
+  font-size:.88rem; color:var(--ink-muted); margin:4px 0;
+}
+.a11y-note{ margin-top:10px !important; }
+.site-footer a{ color:var(--ink-muted); }
+.site-footer a:hover{ color:var(--teal-dark); }
