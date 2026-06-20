@@ -250,6 +250,28 @@ h1{ font-size:clamp(2.1rem, 5vw, 3.2rem); max-width:16ch; }
 /* ---------- Get involved ---------- */
 .note{ color:var(--ink-muted); font-size:.92rem; max-width:58ch; margin-top:4px; }
 
+/* ---------- Updates / blog ---------- */
+.update-list{ margin-top:8px; }
+.update-entry{
+  padding:24px 0; border-bottom:1px solid var(--border);
+}
+.update-entry:first-child{ padding-top:0; }
+.update-entry:last-child{ border-bottom:none; }
+.update-entry h3{ font-size:1.2rem; margin:.2em 0 .4em; }
+.update-entry h3 a{ color:var(--ink); text-decoration:none; }
+.update-entry h3 a:hover{ color:var(--teal-dark); text-decoration:underline; }
+.update-entry p{ color:var(--ink-muted); }
+
+.post-back{
+  font-size:.9rem; margin-bottom:18px;
+}
+.post-back a{ color:var(--ink-muted); }
+.post .kicker{ margin-bottom:6px; }
+.post h1{ font-size:clamp(1.7rem, 4vw, 2.4rem); max-width:none; }
+.post-body{ margin-top:18px; max-width:68ch; }
+.post-body p{ color:var(--ink-muted); }
+.post-body a{ color:var(--teal-dark); }
+
 /* ---------- Footer ---------- */
 .site-footer{ border-top:1px solid var(--border); padding:32px 0 44px; }
 .site-footer p{
@@ -258,3 +280,31 @@ h1{ font-size:clamp(2.1rem, 5vw, 3.2rem); max-width:16ch; }
 .a11y-note{ margin-top:10px !important; }
 .site-footer a{ color:var(--ink-muted); }
 .site-footer a:hover{ color:var(--teal-dark); }
+
+/* ---------- Nav: current page ---------- */
+.site-nav a[aria-current="page"]{
+  color:var(--ink); font-weight:700;
+  text-decoration:underline; text-decoration-color:var(--rust);
+  text-underline-offset:4px;
+}
+
+/* ---------- Local groups page ---------- */
+.group-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px;
+}
+@media (max-width:700px){ .group-grid{ grid-template-columns:1fr; } }
+.group-card{
+  background:#fff; border:1px solid var(--border); border-top:4px solid var(--rust);
+  border-radius:var(--radius); padding:26px;
+}
+.group-card h3{ margin-bottom:.3em; }
+.group-meta{
+  font-family:var(--font-mono); font-size:.8rem; color:var(--ink-muted);
+  margin-bottom:14px;
+}
+.group-card p:not(.group-meta){ color:var(--ink-muted); font-size:.97rem; }
+.group-link{
+  display:inline-block; margin-top:8px; font-weight:600; color:var(--rust-dark);
+  text-decoration:none;
+}
+.group-link:hover{ color:var(--rust); text-decoration:underline; }
