@@ -1,9 +1,19 @@
 # Ware Hackspace website
 
 The site for a new hackspace and Linux User Group (Ware LUG) in Ware,
-Hertfordshire, including a proposed collaboration with Ware Men's Shed.
+Hertfordshire, including a directory of other active local groups.
 
-It's a plain static site — three files, no build step, no framework.
+## Project status
+
+Ware Hackspace is brand new: a website, a handful of interested
+people, and informal meet-ups starting at a local pub while the group
+grows. There's no fixed venue yet, deliberately, the plan is to grow
+the group first and find a proper home once there's a real need for
+one. The up-to-date roadmap lives on the site itself (`#roadmap` in
+`index.html`), not here, so there's a single source of truth rather
+than two lists that can drift out of sync.
+
+It's a plain static site, three files, no build step, no framework.
 That's deliberate: anything that needs a build process is one more thing
 that can break GitHub Pages silently. Edit a file, commit, and the live
 site updates within a minute or two.
